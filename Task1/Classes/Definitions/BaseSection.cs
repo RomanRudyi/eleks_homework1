@@ -50,7 +50,9 @@ namespace Task1.Classes.Definitions
             sortedAuthors.Sort();
 
             foreach (Author a in sortedAuthors)
+            {
                 builder.Append($"{a}\n");
+            }
             return builder.ToString();
         }
 
@@ -58,7 +60,9 @@ namespace Task1.Classes.Definitions
         {
             int booksCount = 0;
             foreach (Author a in authors)
+            {
                 booksCount += a.GetBooksCount();
+            }
             return booksCount;
         }
     }

@@ -42,7 +42,9 @@ namespace Task1.Classes.Definitions
             sortedSections.Sort();
 
             foreach (Section s in sortedSections)
+            {
                 builder.Append($"{s}\n");
+            }
             return builder.ToString();
         }
 
@@ -50,7 +52,9 @@ namespace Task1.Classes.Definitions
         {
             int booksCount = 0;
             foreach (Section s in sections)
+            {
                 booksCount += s.GetBooksCount();
+            }
             return booksCount;
         }
     }
