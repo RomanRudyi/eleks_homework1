@@ -22,15 +22,17 @@ namespace Task4
                 { 1, 2, 3, 4, 2, 6, 7, 8 }
             };
 
-            int[,] matrix4 = new int[,]
+            Console.WriteLine("Input data:");
+            for (int i = 0; i < matrix.GetLength(0); i++)
             {
-                { 1, 1, 1, 1 },
-                { 1, 2, 2, 2 },
-                { 1, 2, 3, 4 },
-                { 1, 2, 3, 4 }
-            };
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    Console.Write($"{matrix[i, j]}\t");
+                }
+                Console.WriteLine();
+            }
 
-            Console.WriteLine("Row & col are equals");
+            Console.WriteLine("Row & col are equals with K");
 
             ShowEqualsRowAndCol(matrix);
 
@@ -45,10 +47,14 @@ namespace Task4
                 for (int j = 0; j < matrix.GetLength(0); j++)
                 {
                     if (matrix[i, j] != matrix[j, i])
+                    {
                         areEqual = false;
+                    }                        
                 }
                 if (areEqual)
-                    Console.WriteLine($"k = {i}");
+                {
+                    Console.WriteLine($"K = {i + 1}");
+                }
             }
         }
     }

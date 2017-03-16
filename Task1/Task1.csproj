@@ -43,11 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Author.cs" />
-    <Compile Include="Classes\Book.cs" />
-    <Compile Include="Classes\ICountingBooks.cs" />
-    <Compile Include="Classes\Library.cs" />
-    <Compile Include="Classes\Section.cs" />
+    <Compile Include="Classes\Implementations\Author.cs" />
+    <Compile Include="Classes\Implementations\Book.cs" />
+    <Compile Include="Classes\Definitions\BaseAuthor.cs" />
+    <Compile Include="Classes\Definitions\BaseBook.cs" />
+    <Compile Include="Classes\Definitions\BaseLibrary.cs" />
+    <Compile Include="Classes\Definitions\BaseSection.cs" />
+    <Compile Include="Classes\Interfaces\ICountingBooks.cs" />
+    <Compile Include="Classes\Implementations\Library.cs" />
+    <Compile Include="Classes\Implementations\Section.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

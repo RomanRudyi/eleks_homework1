@@ -19,9 +19,19 @@ namespace Task2
                 new int[]{ 1, 2, 3, 4, 1 }
             };
 
+            Console.WriteLine("Input data");
+            for (int i = 0; i < matrix.Length; i++)
+            {
+                for (int j = 0; j < matrix[i].Length; j++)
+                {
+                    Console.Write($"{matrix[i][j]}\t");
+                }
+                Console.Write("\n");
+            }
+
             int idx = GetFirstPositiveRowIndex(matrix);
 
-            Console.WriteLine($"First row without negative numbers is {idx}");
+            Console.WriteLine($"First row without negative numbers is {idx + 1}");
 
             Console.WriteLine($"Rows were rearranged by count of duplicates\n");
             RearrangeByDuplicates(matrix, 1);
@@ -81,8 +91,12 @@ namespace Task2
         {
             int count = 0;
             foreach (int i in row)
+            {
                 if (i == duplicate)
+                {
                     count++;
+                }
+            }
             return count;
         }
         #endregion

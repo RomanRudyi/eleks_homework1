@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task1.Classes
+namespace Task1.Classes.Definitions
 {
     abstract class BaseSection : IComparable<BaseSection>, ICountingBooks
     {
@@ -19,11 +19,18 @@ namespace Task1.Classes
 
         public Author[] Authors
         {
-            get { return authors; }
+            get
+            {
+                if (authors == null)
+                {
+                    authors = new Author[] { };
+                }
+                return authors;
+            }
             set { authors = value; }
         }
 
-        public BaseSection() : this("unknown section", new Author[] { }) { }
+        public BaseSection() : this("unknown section", null) { }
 
         public BaseSection(string type, Author[] authors)
         {
@@ -36,7 +43,7 @@ namespace Task1.Classes
         public override string ToString()
         {
             StringBuilder builder = new StringBuilder();
-            
+
             builder.Append($"The \"{Type}\" section has {GetBooksCount()} books total\n\n");
 
             var sortedAuthors = Authors.ToList<Author>();
@@ -53,23 +60,6 @@ namespace Task1.Classes
             foreach (Author a in authors)
                 booksCount += a.GetBooksCount();
             return booksCount;
-        }
-    }
-
-    class Section : BaseSection
-    {
-        public Section() : base() { }
-
-        public Section(string type, Author[] authors) : base(type, authors) { }
-
-        public override int CompareTo(BaseSection section)
-        {
-            if (this.GetBooksCount() > section.GetBooksCount())
-                return 1;
-            else if (this.GetBooksCount() < section.GetBooksCount())
-                return -1;
-            else
-                return 0;
         }
     }
 }

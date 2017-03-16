@@ -19,6 +19,16 @@ namespace Task3
                 { 2, 9, 3, 8, 1 }
             };
 
+            Console.WriteLine("Input data:");
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    Console.Write($"{matrix[i, j]}\t");
+                }
+                Console.WriteLine();
+            }
+
             Console.WriteLine("Sum in row with negative numbers");
             SumInRowNeg(matrix);
 
@@ -37,11 +47,15 @@ namespace Task3
                 for (int j = 0; j < matrix.GetLength(1); j++)
                 {
                     if (matrix[i, j] < 0)
+                    {
                         hasNegative = true;
+                    }
                     sum += matrix[i, j];
                 }
                 if (hasNegative)
-                    Console.Write($"Sum int row {i} = {sum}\n");
+                {
+                    Console.Write($"Sum int row {i + 1} = {sum}\n");
+                }
             }
         }
         #endregion
@@ -54,7 +68,9 @@ namespace Task3
                 for (int j = 0; j < matrix.GetLength(1); j++)
                 {
                     if (IsMinInRow(matrix, i, j) && IsMaxInCol(matrix, i, j))
-                        Console.WriteLine($"Saddle point: row = {i}, column = {j}");
+                    {
+                        Console.WriteLine($"Saddle point: row = {i + 1}, column = {j + 1}");
+                    }
                 }
             }
         }
@@ -64,9 +80,14 @@ namespace Task3
             bool isMin = true;
             for (int i = 0; i < matrix.GetLength(1); i++)
             {
-                if (i == col) continue;
+                if (i == col)
+                {
+                    continue;
+                }
                 if (matrix[row, col] > matrix[row, i])
+                {
                     isMin = false;
+                }
             }
             return isMin;
         }
@@ -76,9 +97,14 @@ namespace Task3
             bool isMax = true;
             for (int i = 0; i < matrix.GetLength(0); i++)
             {
-                if (i == row) continue;
+                if (i == row)
+                {
+                    continue;
+                }
                 if (matrix[row, col] < matrix[i, col])
+                {
                     isMax = false;
+                }
             }
             return isMax;
         }

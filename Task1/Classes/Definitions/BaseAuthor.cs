@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task1.Classes
+namespace Task1.Classes.Definitions
 {
     abstract class BaseAuthor : IComparable<BaseAuthor>, ICountingBooks
     {
@@ -19,11 +19,18 @@ namespace Task1.Classes
 
         public Book[] Books
         {
-            get { return books; }
+            get
+            {
+                if (books == null)
+                {
+                    books = new Book[] { };
+                }
+                return books;
+            }
             set { books = value; }
         }
 
-        public BaseAuthor() : this("unknown author", new Book[] { }) { }
+        public BaseAuthor() : this("unknown author", null) { }
 
         public BaseAuthor(string name, Book[] books)
         {
@@ -42,27 +49,12 @@ namespace Task1.Classes
             sortedBooks.Sort();
 
             foreach (Book b in sortedBooks)
+            {
                 builder.Append($"{b}\n");
+            }
             return builder.ToString();
         }
 
         public int GetBooksCount() => (Books.Length);
-    }
-
-    class Author : BaseAuthor
-    {
-        public Author() : base() { }
-
-        public Author(string name, Book[] books) : base(name, books) { }
-
-        public override int CompareTo(BaseAuthor author)
-        {
-            if (this.GetBooksCount() > author.GetBooksCount())
-                return 1;
-            else if (this.GetBooksCount() < author.GetBooksCount())
-                return -1;
-            else
-                return 0;
-        }
     }
 }
